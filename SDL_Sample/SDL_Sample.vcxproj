@@ -117,7 +117,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="BlitRendering.cpp" />
+    <ClCompile Include="SDLTutorial.cpp" />
+    <ClCompile Include="TextureRendering.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BlitRendering.h" />
+    <ClInclude Include="TextureRendering.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
