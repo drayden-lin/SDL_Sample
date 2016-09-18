@@ -1,11 +1,6 @@
 #include "BlitRendering.h"
 
-SDL_Window* window = NULL;
-SDL_Surface* windowSurface = NULL;
-SDL_Surface* imageSurface = NULL;
-SDL_Surface* pressedSurface[KEYPRESSED_TOTAL];
-
-int blitMain() {
+int BlitRendering::Main() {
 	bool quit = false;
 	SDL_Event event;
 
@@ -73,7 +68,7 @@ int blitMain() {
 
 }
 
-bool init() {
+bool BlitRendering::init() {
 
 	if (SDL_Init(SDL_INIT_VIDEO)<0) { return false; }
 
@@ -96,7 +91,7 @@ bool init() {
 	return true;
 }
 
-bool loadMedia() {
+bool BlitRendering::loadMedia() {
 	pressedSurface[KEYPRESSED_DEFAULT] = loadMediaSurface("Data/press.bmp");
 	if (!pressedSurface[KEYPRESSED_DEFAULT])return false;
 	pressedSurface[KEYPRESSED_UP] = loadMediaSurface("Data/up.bmp");
@@ -112,7 +107,7 @@ bool loadMedia() {
 	return true;
 }
 
-void close() {
+void BlitRendering::close() {
 	for (int i = 0; i < KEYPRESSED_TOTAL; ++i) {
 		SDL_FreeSurface(pressedSurface[i]);
 		pressedSurface[i] = NULL;
@@ -124,7 +119,7 @@ void close() {
 	IMG_Quit();
 }
 
-SDL_Surface* loadMediaSurface(std::string path) {
+SDL_Surface* BlitRendering::loadMediaSurface(std::string path) {
 
 	SDL_Surface* optimized = NULL;
 	SDL_Surface* tempSurface = SDL_LoadBMP(path.c_str());
@@ -140,7 +135,7 @@ SDL_Surface* loadMediaSurface(std::string path) {
 }
 
 
-SDL_Surface* loadPNGSurface(std::string path) {
+SDL_Surface* BlitRendering::loadPNGSurface(std::string path) {
 
 	SDL_Surface* optimizedSurface = NULL;
 

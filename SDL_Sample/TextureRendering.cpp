@@ -1,22 +1,14 @@
 #include "TextureRendering.h"
 
-SDL_Texture* TRsurfaceTexture = NULL;
-SDL_Window* TRwindow = NULL;
-SDL_Surface* TRwindowSurface = NULL;
-SDL_Surface* TRimageSurface = NULL;
-
-SDL_Renderer* textureRender = NULL;
-
-
-int TRMain() {
+int TextureRandering::Main() {
 	bool quit = false;
 	SDL_Event event;
 
-	if (TRinit() == false) {
+	if (init() == false) {
 		return -1;
 		printf("init() Returned False\n");
 	}
-	if (TRloadMedia() == false) {
+	if (loadMedia() == false) {
 		return -1;
 		printf("loadMedia() Returned False\n");
 	}
@@ -30,17 +22,17 @@ int TRMain() {
 		}
 
 		SDL_RenderClear(textureRender);
-		SDL_RenderCopy(textureRender, TRsurfaceTexture, 0, 0);
+		SDL_RenderCopy(textureRender, surfaceTexture, 0, 0);
 		SDL_RenderPresent(textureRender);
 
 	}
 
-	TRclose();
+	close();
 	return 0;
 
 }
 
-bool TRinit() {
+bool TextureRandering::init() {
 
 	if (SDL_Init(SDL_INIT_VIDEO)<0) { return false; }
 
@@ -55,40 +47,40 @@ bool TRinit() {
 		return false;
 	}
 
-	TRwindow = SDL_CreateWindow("SDL Sample", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, TR_SCREEN_WIDTH, TR_SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-	if (TRwindow == NULL) { return false; }
+	window = SDL_CreateWindow("SDL Sample", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	if (window == NULL) { return false; }
 
-	textureRender = SDL_CreateRenderer(TRwindow, -1, SDL_RENDERER_ACCELERATED);
+	textureRender = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	if (textureRender == NULL) { return false; }
 
 	SDL_SetRenderDrawColor(textureRender, 0x00, 0x00, 0x00, 0x00);
 
-	TRwindowSurface = SDL_GetWindowSurface(TRwindow);
+	windowSurface = SDL_GetWindowSurface(window);
 
 	return true;
 }
 
-bool TRloadMedia() {
+bool TextureRandering::loadMedia() {
 
-	TRsurfaceTexture = loadMediaTexture("Data/texture.png");
-	if (!TRsurfaceTexture)return false;
+	surfaceTexture = loadMediaTexture("Data/texture.png");
+	if (!surfaceTexture)return false;
 
 	return true;
 }
 
-void TRclose() {
+void TextureRandering::close() {
 
 	//SDL_FreeSurface(imageSurface);
-	SDL_DestroyWindow(TRwindow);
+	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(textureRender);
-	SDL_DestroyTexture(TRsurfaceTexture);
+	SDL_DestroyTexture(surfaceTexture);
 	SDL_Quit();
 	IMG_Quit();
 }
 
 
 
-SDL_Texture* loadMediaTexture(std::string path) {
+SDL_Texture* TextureRandering::loadMediaTexture(std::string path) {
 	SDL_Surface* tempSurface = NULL;
 	SDL_Texture* returnTexture = NULL;
 

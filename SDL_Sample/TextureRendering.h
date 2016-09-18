@@ -4,12 +4,23 @@
 #include <string>
 #include <SDL_image.h>
 
-const int TR_SCREEN_WIDTH = 800;
-const int TR_SCREEN_HEIGHT = 600;
+class TextureRandering{
+public:
+	const int SCREEN_WIDTH = 800;
+	const int SCREEN_HEIGHT = 600;
 
-int TRMain();
-bool TRinit();
-bool TRloadMedia();
-void TRclose();
+	int Main();
+	bool init();
+	bool loadMedia();
+	void close();
 
-SDL_Texture* loadMediaTexture(std::string path);
+private:
+	SDL_Texture* surfaceTexture = NULL;
+	SDL_Window* window = NULL;
+	SDL_Surface* windowSurface = NULL;
+	SDL_Surface* imageSurface = NULL;
+
+	SDL_Renderer* textureRender = NULL;
+
+	SDL_Texture* loadMediaTexture(std::string path);
+};

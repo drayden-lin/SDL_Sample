@@ -1,19 +1,22 @@
 
 #include "BlitRendering.h"
 #include "TextureRendering.h"
-#define BLIT 0
-#define TEXTURE 0
+#define BLIT 1
+
 
 
 
 int main(int argc, char *args[]) {
 
+	TextureRandering* tr = new TextureRandering();
+	BlitRendering* br = new BlitRendering();
+
 	if (BLIT) {
-		if (blitMain())
+		if (br->Main())
 			return -1;
 	}
 	else {
-		if (TRMain())
+		if (tr->Main())
 			return -1;
 	}
 
