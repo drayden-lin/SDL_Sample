@@ -120,10 +120,12 @@
     <ClCompile Include="BlitRendering.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
     <ClCompile Include="TextureRendering.cpp" />
+    <ClCompile Include="ViewPort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlitRendering.h" />
     <ClInclude Include="TextureRendering.h" />
+    <ClInclude Include="ViewPort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
