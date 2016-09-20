@@ -3,6 +3,7 @@
 #include "TextureRendering.h"
 #include "ViewPort.h"
 #include "Geometry.h"
+#include "ColorKeying.h"
 
 #define BLIT 1
 
@@ -15,8 +16,12 @@ int main(int argc, char *args[]) {
 	BlitRendering* br = new BlitRendering();
 	ViewPort* vp = new ViewPort();
 	Geometry* gm = new Geometry();
+	ColorKeying* ck = new ColorKeying();
 
-	gm->Main();
+	printf("Begin! \n");
+
+	if (!ck->Main()) return -1;
+	//gm->Main();
 	//vp->Main();
 	/*if (BLIT) {
 		if (br->Main())
