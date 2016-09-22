@@ -18,6 +18,7 @@ bool CTexture::loadTexture(SDL_Renderer* r, std::string path) {
 		return false; 
 	}
 
+	// Set the color cyan to be transparent
 	SDL_SetColorKey(tempSurface, SDL_TRUE, SDL_MapRGB(tempSurface->format, 0, 0xFF, 0xFF));
 	cTexture = SDL_CreateTextureFromSurface(r, tempSurface);
 
@@ -35,9 +36,12 @@ bool CTexture::loadTexture(SDL_Renderer* r, std::string path) {
 	
 
 bool CTexture::render(SDL_Renderer* r, int x, int y, SDL_Rect* clip) {
-	//TODO:
+	// renderQuad is the area to be rendered
+	// We set it to be the width and height of the whole texture first
+	// Then we check if we're doing clip rendering
 	SDL_Rect renderQuad = { x, y, tWidth, tHeight};
 
+	//if we're doing Clip Rendering, we only want to render a small corner per call
 	if (clip != NULL) {
 		renderQuad.w = clip->w;
 		renderQuad.h = clip->h;
@@ -87,13 +91,12 @@ bool ClipRendering::init() {
 }
 
 bool ClipRendering::loadMedia() {
-	//TODO:
 	if (!(spriteTexture.loadTexture(cRenderer, "Data/dots.png"))) {
 		printf("loadTexture Failed\n");
 		return false;
 	}
 
-
+	//spriteClips split the PNG into 4 parts
 	spriteClips[0].x = 0;
 	spriteClips[0].y = 0;
 	spriteClips[0].w = 100;
@@ -143,6 +146,7 @@ bool ClipRendering::Main() {
 		SDL_SetRenderDrawColor(cRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(cRenderer);
 		//do the rendering work here		
+		// For each spriteClip we do a render call.
 		spriteTexture.render(cRenderer, 0, 0, &spriteClips[0]);
 		spriteTexture.render(cRenderer, screenWidth - spriteClips[1].w, 0, &spriteClips[1]);
 		spriteTexture.render(cRenderer, 0, screenHeight - spriteClips[2].h, &spriteClips[2]);
