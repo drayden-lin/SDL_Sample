@@ -118,6 +118,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlitRendering.cpp" />
+    <ClCompile Include="ClipRendering.cpp" />
     <ClCompile Include="ColorKeying.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlitRendering.h" />
+    <ClInclude Include="ClipRendering.h" />
     <ClInclude Include="ColorKeying.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="TextureRendering.h" />

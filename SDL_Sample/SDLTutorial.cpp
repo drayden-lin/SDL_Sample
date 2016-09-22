@@ -4,6 +4,7 @@
 #include "ViewPort.h"
 #include "Geometry.h"
 #include "ColorKeying.h"
+#include "ClipRendering.h"
 
 #define BLIT 1
 
@@ -17,10 +18,13 @@ int main(int argc, char *args[]) {
 	ViewPort* vp = new ViewPort();
 	Geometry* gm = new Geometry();
 	ColorKeying* ck = new ColorKeying();
+	ClipRendering* cr = new ClipRendering();
 
-	printf("Begin! \n");
-
-	if (!ck->Main()) return -1;
+	if (!cr->Main()) {
+		SDL_Delay(2000);
+		return -1;
+	}
+	//if (!ck->Main()) return -1;
 	//gm->Main();
 	//vp->Main();
 	/*if (BLIT) {
