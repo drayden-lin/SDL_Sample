@@ -117,6 +117,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlphaBlending.cpp" />
     <ClCompile Include="BlitRendering.cpp" />
     <ClCompile Include="ClipRendering.cpp" />
     <ClCompile Include="ColorKeying.cpp" />
@@ -127,6 +128,7 @@
     <ClCompile Include="ViewPort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlphaBlending.h" />
     <ClInclude Include="BlitRendering.h" />
     <ClInclude Include="ClipRendering.h" />
     <ClInclude Include="ColorKeying.h" />

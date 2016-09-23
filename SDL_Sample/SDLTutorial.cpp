@@ -6,6 +6,7 @@
 #include "ColorKeying.h"
 #include "ClipRendering.h"
 #include "ColorModulation.h"
+#include "AlphaBlending.h"
 
 #define BLIT 1
 
@@ -21,11 +22,13 @@ int main(int argc, char *args[]) {
 	ColorKeying* ck = new ColorKeying();
 	ClipRendering* cr = new ClipRendering();
 	ColorModulation* cm = new ColorModulation();
+	AlphaBlending ab;
 
-	if (!cm->Main()) {
-		SDL_Delay(2000);
+	if (!ab.Main()) {
+		SDL_Delay(3000);
 		return -1;
 	}
+	//cr->Main()
 	//if (!ck->Main()) return -1;
 	//gm->Main();
 	//vp->Main();
