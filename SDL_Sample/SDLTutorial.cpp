@@ -5,6 +5,7 @@
 #include "Geometry.h"
 #include "ColorKeying.h"
 #include "ClipRendering.h"
+#include "ColorModulation.h"
 
 #define BLIT 1
 
@@ -19,8 +20,9 @@ int main(int argc, char *args[]) {
 	Geometry* gm = new Geometry();
 	ColorKeying* ck = new ColorKeying();
 	ClipRendering* cr = new ClipRendering();
+	ColorModulation* cm = new ColorModulation();
 
-	if (!cr->Main()) {
+	if (!cm->Main()) {
 		SDL_Delay(2000);
 		return -1;
 	}

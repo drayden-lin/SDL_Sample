@@ -120,6 +120,7 @@
     <ClCompile Include="BlitRendering.cpp" />
     <ClCompile Include="ClipRendering.cpp" />
     <ClCompile Include="ColorKeying.cpp" />
+    <ClCompile Include="ColorModulation.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
     <ClCompile Include="TextureRendering.cpp" />
@@ -129,6 +130,7 @@
     <ClInclude Include="BlitRendering.h" />
     <ClInclude Include="ClipRendering.h" />
     <ClInclude Include="ColorKeying.h" />
+    <ClInclude Include="ColorModulation.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="TextureRendering.h" />
     <ClInclude Include="ViewPort.h" />
