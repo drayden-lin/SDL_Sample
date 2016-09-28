@@ -37,7 +37,7 @@ bool aTexture::loadTexture(SDL_Renderer* renderer, std::string path) {
 void aTexture::render(SDL_Renderer* renderer, int x, int y, SDL_Rect* clip) {
 	SDL_Rect renderQuad = { x, y, aWidth, aHeight };
 
-	if (!clip) {
+	if (clip!=NULL) {
 		renderQuad.w = clip->w;
 		renderQuad.h = clip->h;
 	}
