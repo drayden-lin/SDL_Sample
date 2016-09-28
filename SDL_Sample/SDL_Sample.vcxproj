@@ -124,6 +124,7 @@
     <ClCompile Include="ColorModulation.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
+    <ClCompile Include="SpriteAnimation.cpp" />
     <ClCompile Include="TextureRendering.cpp" />
     <ClCompile Include="ViewPort.cpp" />
   </ItemGroup>
@@ -134,6 +135,7 @@
     <ClInclude Include="ColorKeying.h" />
     <ClInclude Include="ColorModulation.h" />
     <ClInclude Include="Geometry.h" />
+    <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="TextureRendering.h" />
     <ClInclude Include="ViewPort.h" />
   </ItemGroup>

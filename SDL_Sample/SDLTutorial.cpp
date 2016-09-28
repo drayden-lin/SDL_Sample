@@ -7,6 +7,7 @@
 #include "ClipRendering.h"
 #include "ColorModulation.h"
 #include "AlphaBlending.h"
+#include "SpriteAnimation.h"
 
 #define BLIT 1
 
@@ -23,8 +24,9 @@ int main(int argc, char *args[]) {
 	ClipRendering* cr = new ClipRendering();
 	ColorModulation* cm = new ColorModulation();
 	AlphaBlending ab;
+	SpriteAnimation sa;
 
-	if (!ab.Main()) {
+	if (!sa.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}
