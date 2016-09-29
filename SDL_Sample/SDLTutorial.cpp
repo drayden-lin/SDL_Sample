@@ -8,6 +8,7 @@
 #include "ColorModulation.h"
 #include "AlphaBlending.h"
 #include "SpriteAnimation.h"
+#include "RotationFlipping.h"
 
 #define BLIT 1
 
@@ -25,8 +26,9 @@ int main(int argc, char *args[]) {
 	ColorModulation* cm = new ColorModulation();
 	AlphaBlending ab;
 	SpriteAnimation sa;
+	RotationFlipping rf;
 
-	if (!sa.Main()) {
+	if (!rf.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}
