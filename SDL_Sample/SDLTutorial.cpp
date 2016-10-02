@@ -9,11 +9,9 @@
 #include "AlphaBlending.h"
 #include "SpriteAnimation.h"
 #include "RotationFlipping.h"
+#include "TrueTypeFont.h"
 
 #define BLIT 1
-
-
-
 
 int main(int argc, char *args[]) {
 
@@ -27,8 +25,9 @@ int main(int argc, char *args[]) {
 	AlphaBlending ab;
 	SpriteAnimation sa;
 	RotationFlipping rf;
+	TrueTypeFont ttf;
 
-	if (!rf.Main()) {
+	if (!ttf.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}
