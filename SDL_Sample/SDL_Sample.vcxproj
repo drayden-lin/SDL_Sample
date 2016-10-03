@@ -123,6 +123,7 @@
     <ClCompile Include="ColorKeying.cpp" />
     <ClCompile Include="ColorModulation.cpp" />
     <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="MouseEvent.cpp" />
     <ClCompile Include="RotationFlipping.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="ColorKeying.h" />
     <ClInclude Include="ColorModulation.h" />
     <ClInclude Include="Geometry.h" />
+    <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="RotationFlipping.h" />
     <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="TextureRendering.h" />
