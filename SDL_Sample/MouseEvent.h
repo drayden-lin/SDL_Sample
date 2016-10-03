@@ -4,6 +4,15 @@
 #include <stdio.h>
 #include <string>
 
+enum MouseTexture
+{
+	MOUSE_OUT,
+	MOUSE_DOWN,
+	MOUSE_UP,
+	MOUSE_OVER,
+	TOTAL_SPRITE
+};
+
 class spriteTexture {
 public:
 	spriteTexture();
@@ -23,6 +32,8 @@ public:
 	void handleEvent(SDL_Event* event);
 	void render();
 	void setPosition(int x, int y);
+	int getButtonWidth();
+	int getButtonHeight();
 private:
 	int buttonWidth = 300;
 	int buttonHeight = 200;
@@ -41,7 +52,7 @@ private:
 	const int buttonNumber = 4;
 	SDL_Window* meWindow;
 	SDL_Renderer* meRenderer;
-	SDL_Rect spriteClip[buttonNumber];
-	screenButton meButton[buttonNumber];
+	SDL_Rect spriteClip[TOTAL_SPRITE];
+	screenButton meButton[TOTAL_SPRITE];
 	spriteTexture meTexture;
 };
