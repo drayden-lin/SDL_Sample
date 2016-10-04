@@ -128,6 +128,7 @@
     <ClCompile Include="SDLTutorial.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
     <ClCompile Include="TextureRendering.cpp" />
+    <ClCompile Include="Timing.cpp" />
     <ClCompile Include="TrueTypeFont.cpp" />
     <ClCompile Include="ViewPort.cpp" />
   </ItemGroup>
@@ -142,6 +143,7 @@
     <ClInclude Include="RotationFlipping.h" />
     <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="TextureRendering.h" />
+    <ClInclude Include="Timing.h" />
     <ClInclude Include="TrueTypeFont.h" />
     <ClInclude Include="ViewPort.h" />
   </ItemGroup>
