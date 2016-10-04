@@ -79,7 +79,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -126,6 +126,7 @@
     <ClCompile Include="MouseEvent.cpp" />
     <ClCompile Include="RotationFlipping.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
+    <ClCompile Include="SoundEffects.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
     <ClCompile Include="TextureRendering.cpp" />
     <ClCompile Include="Timing.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="RotationFlipping.h" />
+    <ClInclude Include="SoundEffects.h" />
     <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="TextureRendering.h" />
     <ClInclude Include="Timing.h" />

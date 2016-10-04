@@ -1,5 +1,5 @@
 #include "MouseEvent.h"
-
+#if 0
 spriteTexture::spriteTexture() {
 	spriteWidth = 0;
 	spriteHeight = 0;
@@ -83,14 +83,15 @@ bool MouseEvent::loadMedia() {
 	for (int i = 0; i < TOTAL_SPRITE; i++) {
 		spriteClip[i].x = 0;
 		spriteClip[i].y = i * 200;
-		spriteClip[i].w = meButton[i].getButtonWidth;
-		spriteClip[i].h = meButton[i].getButtonHeight;
+		spriteClip[i].w = meButton[i].getButtonWidth();
+		spriteClip[i].h = meButton[i].getButtonHeight();
 	}
 
 	meButton[0].setPosition(0,0);
 	meButton[1].setPosition(screenWidth - 300, 0);
 	meButton[2].setPosition(0, screenHeight - 200);
 	meButton[3].setPosition(screenWidth - 300, screenHeight - 200);
+	return true;
 }
 
 void MouseEvent::close() {
@@ -139,3 +140,4 @@ bool MouseEvent::Main() {
 	}
 	return true;
 }
+#endif

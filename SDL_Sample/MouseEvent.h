@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
-
+#if 0
 enum MouseTexture
 {
 	MOUSE_OUT,
@@ -56,3 +56,4 @@ private:
 	screenButton meButton[TOTAL_SPRITE];
 	spriteTexture meTexture;
 };
+#endif

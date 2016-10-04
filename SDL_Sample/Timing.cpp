@@ -9,7 +9,7 @@ textTexture::textTexture() {
 textTexture::~textTexture() {
 	free();
 }
-bool textTexture::putStringInTexture(SDL_Renderer* renderer, SDL_Font* font, SDL_Color textColor) {
+bool textTexture::putStringInTexture(SDL_Renderer* renderer, TTF_Font* font, SDL_Color textColor) {
 	free();
 
 	SDL_Surface* tempSurface = TTF_RenderText_Solid(font, textString.c_str(), textColor);
@@ -91,7 +91,7 @@ bool Timing::init() {
 	return true;
 }
 bool Timing::loadMedia() {
-	tFont = SDL_OpenFont("Data/lazy.ttf", 28);
+	tFont = TTF_OpenFont("Data/lazy.ttf", 28);
 	if (tFont == NULL) {
 		printf("SDL_OpenFont() Failed\n");
 		return false;
@@ -139,7 +139,7 @@ bool Timing::Main() {
 				quit = true;
 			}
 			//Other Event Handling
-			else if (event.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN)
+			else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RETURN)
 			{
 				startTime = SDL_GetTicks();
 			}

@@ -10,7 +10,7 @@ class textTexture {
 public:
 	textTexture();
 	~textTexture();
-	bool putStringInTexture(SDL_Renderer* renderer, SDL_Font* font, SDL_Color textColor);
+	bool putStringInTexture(SDL_Renderer* renderer, TTF_Font* font, SDL_Color textColor);
 	void render(SDL_Renderer* renderer, int x, int y);
 	void free();
 	int getWidth();
@@ -34,7 +34,7 @@ private:
 	const int screenHeight = 480;
 	SDL_Window* tWindow;
 	SDL_Renderer* tRenderer;
-	SDL_Font* tFont;
+	TTF_Font* tFont;
 	textTexture textSprite;
 	textTexture prompt;
 };

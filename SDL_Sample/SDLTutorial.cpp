@@ -10,39 +10,32 @@
 #include "SpriteAnimation.h"
 #include "RotationFlipping.h"
 #include "TrueTypeFont.h"
+#include "Timing.h"
+#include "SoundEffects.h"
 
 #define BLIT 1
 
 int main(int argc, char *args[]) {
 
-	TextureRandering* tr = new TextureRandering();
-	BlitRendering* br = new BlitRendering();
-	ViewPort* vp = new ViewPort();
-	Geometry* gm = new Geometry();
-	ColorKeying* ck = new ColorKeying();
-	ClipRendering* cr = new ClipRendering();
-	ColorModulation* cm = new ColorModulation();
+	TextureRandering tr;
+	BlitRendering br;
+	ViewPort vp;
+	Geometry gm;
+	ColorKeying ck;
+	ClipRendering cr;
+	ColorModulation cm;
 	AlphaBlending ab;
 	SpriteAnimation sa;
 	RotationFlipping rf;
 	TrueTypeFont ttf;
+	Timing t;
+	SoundEffects se;
+	
 
-	if (!ttf.Main()) {
+	if (!se.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}
-	//cr->Main()
-	//if (!ck->Main()) return -1;
-	//gm->Main();
-	//vp->Main();
-	/*if (BLIT) {
-		if (br->Main())
-			return -1;
-	}
-	else {
-		if (tr->Main())
-			return -1;
-	}*/
 
 	return 0;
 }
