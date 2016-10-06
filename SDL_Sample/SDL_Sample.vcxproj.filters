@@ -57,6 +57,9 @@
     <ClInclude Include="SoundEffects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="KeyStates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDLTutorial.cpp">
@@ -102,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SoundEffects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyStates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
