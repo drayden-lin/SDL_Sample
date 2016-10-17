@@ -1,5 +1,5 @@
 #include "MouseEvent.h"
-#if 0
+#if 1
 spriteTexture::spriteTexture() {
 	spriteWidth = 0;
 	spriteHeight = 0;
@@ -42,11 +42,67 @@ void spriteTexture::free() {
 		spriteHeight = 0;
 	}
 }
+int spriteTexture::getWidth(){
+    return spriteWidth;
+}
+int spriteTexture::getHeight(){
+    return spriteHeight;
+}
+
+//ScreenButton
 
 screenButton::screenButton() {
 	position.x = 0;
 	position.y = 0;
+    currentTexture = MOUSE_OUT;
 }
+void screenButton::handleEvent(SDL_Event* event){
+    if(event->type == SDL_MOUSEMOTION || event->type == SDL_MOUSEBUTTONDOWN || event->type == SDL_MOUSEBUTTONUP ){
+        int mouseX, mouseY;
+        bool isInside = true;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        
+        //see if mouse is inside the button
+        if(mouseX < position.x)
+            isInside = false;
+        else if(mouseX > position.x + buttonWidth)
+            isInside = false;
+        else if(mouseY < position.y)
+            isInside = false;
+        else if(mouseY < position.y + buttonHeight)
+            isInside = false;
+
+        if(!isInside){
+            // mouse falls outside of the button
+            currentTexture = MOUSE_OUT;
+        }
+        else{
+            switch(event->type)
+            {
+            case SDL_MOUSEMOTION:
+                currentTexture = MOUSE_OVER;
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                currentTexture = MOUSE_DOWN;
+                break;
+            case SDL_MOUSEBUTTONUP:
+                currentTexture = MOUSE_UP;
+                break;
+            }        
+        }
+    }
+}
+
+void screenButton::render(SDL_Texture* texture, SDL_Renderer* renderer, SDL_Rect* spriteClip){
+    texture.render(renderer, position.x, position.y, spriteClip[currentTexture]);
+}
+
+void screenButton::setPosition(int x, int y){
+    position.x = x;
+    position.y = y;
+}
+
+//Mouse Event
 
 bool MouseEvent::init() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -54,7 +110,7 @@ bool MouseEvent::init() {
 		return false;
 	}
 	if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
-		printf("SDL_SetHint() Failed");
+		printf("SDL_SetHint() Failed\n");
 	}
 
 	meWindow = SDL_CreateWindow("Mouse Event", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
@@ -133,7 +189,7 @@ bool MouseEvent::Main() {
 		SDL_RenderClear(meRenderer);
 
 		for (int i = 0; i < TOTAL_SPRITE; i++) {
-			meButton[i].render();
+			meButton[i].render(meTexture, meRenderer, &spriteClip);
 		}
 
 		SDL_RenderPresent(meRenderer);

@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
-#if 0
+#if 1
 enum MouseTexture
 {
 	MOUSE_OUT,
@@ -20,6 +20,8 @@ public:
 	bool loadTexture(SDL_Renderer* renderer, std::string path);
 	void render(SDL_Renderer* renderer, int x, int y, SDL_Rect* clip);
 	void free();
+    int getWidth();
+    int getHeight();
 private:
 	int spriteWidth;
 	int spriteHeight;
@@ -28,17 +30,16 @@ private:
 class screenButton {
 public:
 	screenButton();
-	~screenButton();
 	void handleEvent(SDL_Event* event);
-	void render();
+	void render(SDL_Texture* texture, SDL_Renderer* renderer, SDL_Rect* spriteClip);
 	void setPosition(int x, int y);
-	int getButtonWidth();
-	int getButtonHeight();
+	//int getButtonWidth();
+	//int getButtonHeight();
 private:
 	int buttonWidth = 300;
 	int buttonHeight = 200;
 	SDL_Point position;
-	spriteTexture currentTexture;
+	MouseTexture currentTexture;
 };
 class MouseEvent {
 public:
