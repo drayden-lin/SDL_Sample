@@ -1,5 +1,5 @@
 #include "MouseEvent.h"
-#if 1
+#if 0
 spriteTexture::spriteTexture() {
 	spriteWidth = 0;
 	spriteHeight = 0;

@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
-#if 1
+#if 0
 enum MouseTexture
 {
 	MOUSE_OUT,
