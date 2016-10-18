@@ -1,5 +1,5 @@
 #include "MouseEvent.h"
-#if 0
+#if 1
 spriteTexture::spriteTexture() {
 	spriteWidth = 0;
 	spriteHeight = 0;
@@ -56,6 +56,13 @@ screenButton::screenButton() {
 	position.y = 0;
     currentTexture = MOUSE_OUT;
 }
+
+int screenButton::getButtonHeight() {
+	return buttonHeight;
+}
+int screenButton::getButtonWidth() {
+	return buttonWidth;
+}
 void screenButton::handleEvent(SDL_Event* event){
     if(event->type == SDL_MOUSEMOTION || event->type == SDL_MOUSEBUTTONDOWN || event->type == SDL_MOUSEBUTTONUP ){
         int mouseX, mouseY;
@@ -69,7 +76,7 @@ void screenButton::handleEvent(SDL_Event* event){
             isInside = false;
         else if(mouseY < position.y)
             isInside = false;
-        else if(mouseY < position.y + buttonHeight)
+        else if(mouseY > position.y + buttonHeight)
             isInside = false;
 
         if(!isInside){
@@ -93,8 +100,8 @@ void screenButton::handleEvent(SDL_Event* event){
     }
 }
 
-void screenButton::render(SDL_Texture* texture, SDL_Renderer* renderer, SDL_Rect* spriteClip){
-    texture.render(renderer, position.x, position.y, spriteClip[currentTexture]);
+void screenButton::render(spriteTexture* texture, SDL_Renderer* renderer, SDL_Rect spriteClip[]){
+    texture->render(renderer, position.x, position.y, &spriteClip[currentTexture]);
 }
 
 void screenButton::setPosition(int x, int y){
@@ -189,7 +196,7 @@ bool MouseEvent::Main() {
 		SDL_RenderClear(meRenderer);
 
 		for (int i = 0; i < TOTAL_SPRITE; i++) {
-			meButton[i].render(meTexture, meRenderer, &spriteClip);
+			meButton[i].render(&meTexture, meRenderer, spriteClip);
 		}
 
 		SDL_RenderPresent(meRenderer);

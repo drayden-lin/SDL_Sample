@@ -7,6 +7,7 @@
 #include "ClipRendering.h"
 #include "ColorModulation.h"
 #include "AlphaBlending.h"
+#include "MouseEvent.h"
 #include "SpriteAnimation.h"
 #include "RotationFlipping.h"
 #include "TrueTypeFont.h"
@@ -30,9 +31,10 @@ int main(int argc, char *args[]) {
 	TrueTypeFont ttf;
 	Timing t;
 	SoundEffects se;
+	MouseEvent me;
 	
 
-	if (!se.Main()) {
+	if (!me.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}

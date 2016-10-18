@@ -3,13 +3,13 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
-#if 0
+#if 1
 enum MouseTexture
 {
 	MOUSE_OUT,
+	MOUSE_OVER,
 	MOUSE_DOWN,
 	MOUSE_UP,
-	MOUSE_OVER,
 	TOTAL_SPRITE
 };
 
@@ -31,10 +31,10 @@ class screenButton {
 public:
 	screenButton();
 	void handleEvent(SDL_Event* event);
-	void render(SDL_Texture* texture, SDL_Renderer* renderer, SDL_Rect* spriteClip);
+	void render(spriteTexture* texture, SDL_Renderer* renderer, SDL_Rect spriteClip[]);
 	void setPosition(int x, int y);
-	//int getButtonWidth();
-	//int getButtonHeight();
+	int getButtonWidth();
+	int getButtonHeight();
 private:
 	int buttonWidth = 300;
 	int buttonHeight = 200;
