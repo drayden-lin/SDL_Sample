@@ -13,6 +13,9 @@
 #include "Include/TrueTypeFont.h"
 #include "Include/Timing.h"
 #include "Include/SoundEffects.h"
+//#include "Include/Framerate.h"
+//#include "Include\AdvanceTiming.h"
+#include "Include\Motion.h"
 
 #define BLIT 1
 
@@ -32,9 +35,12 @@ int main(int argc, char *args[]) {
 	Timing t;
 	SoundEffects se;
 	MouseEvent me;
+	//Framerate fr;
+	//AdvanceTiming at;
+	Motion m;
 	
 
-	if (!me.Main()) {
+	if (!m.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}

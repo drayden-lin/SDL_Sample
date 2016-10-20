@@ -1,18 +1,4 @@
-#include "Motion.h"
-
-class Motion{
-	public:
-		bool Main();
-		bool init();
-		bool loadMedia();
-		void close();
-	private:
-		const int screenWidth = 640;
-		const int screenHeight = 480;
-		SDL_Window* mWindow = NULL;
-		SDL_Renderer* mRenderer = NULL;
-		RenderTexture dotTexture;
-};
+#include "Include/Motion.h"
 
 Dot::Dot(){
 	xVelocity = 0;
@@ -68,18 +54,18 @@ void Dot::move(int maxWidth, int maxHeight){
 }
 
 void Dot::render(RenderTexture* texture, SDL_Renderer* renderer){
-	texture.render(renderer, xPosition, yPosition);
+	texture->render(renderer, xPosition, yPosition);
 }
 
-void setVelocityInterval(int v){
+void Dot::setVelocityInterval(int v){
 	velocityInterval = v;
 }
 
 //===================================================
 void Motion::close(){
 	dotTexture.free();
-	dotTexture = NULL;
-	SDL_DestroyWindow(mWidth);
+
+	SDL_DestroyWindow(mWindow);
 	SDL_DestroyRenderer(mRenderer);
 	SDL_Quit();
 	IMG_Quit();
@@ -91,7 +77,7 @@ bool Motion::init(){
 		printf("SDL_Init() failed\n");
 		return false;
 	}
-	if(SDL_SetHint()){
+	if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")){
 		printf("SetHint Failed\n");
 	}	
 	mWindow = SDL_CreateWindow(
@@ -110,7 +96,7 @@ bool Motion::init(){
 		printf("SDL_CreateRenderer Failed\n");
 		return false;
 	}
-	if(! IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG){
+	if(! IMG_Init(IMG_INIT_PNG) & (IMG_INIT_PNG)){
 		printf("IMG_INIT() Failed\n");
 		return false;
 	}
@@ -118,7 +104,7 @@ bool Motion::init(){
 }
 
 bool Motion::loadMedia(){
-	if(!dotTexture.loadTexture(mRenderer, "Data/.png")){
+	if(!dotTexture.loadTexture(mRenderer, "Data/dot.bmp")){
 		printf("loadTexture Failed\n");
 		return false;
 	}	
@@ -127,9 +113,11 @@ bool Motion::loadMedia(){
 
 bool Motion::Main(){
 	if(!init()){
+		printf("init() Failed\n");
 		return false;
 	}
-	if(loadMedia()){
+	if(!loadMedia()){
+		printf("loadMedia() Failed\n");
 		return false;
 	}
 	
@@ -148,7 +136,7 @@ bool Motion::Main(){
 		SDL_RenderClear(mRenderer);
 		
 		dot.move(screenWidth, screenHeight);
-		dot.render(dotTexture, mRenderer);
+		dot.render(&dotTexture, mRenderer);
 		
 		SDL_RenderPresent(mRenderer);
 	}

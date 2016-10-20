@@ -1,4 +1,4 @@
-#include "Framerate.h"
+#include "Include/Framerate.h"
 
 bool Framerate::init() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -23,7 +23,7 @@ bool Framerate::init() {
 		return false;
 	}
 
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!renderer) {
 		printf("SDL_CreateRenderer() Failed\n");
 		return false;
@@ -52,7 +52,6 @@ bool Framerate::loadMedia() {
 
 void Framerate::close() {
 	texture.free();
-	prompt.free();
 
 	TTF_CloseFont(font);
 	SDL_DestroyWindow(window);
@@ -96,7 +95,7 @@ bool Framerate::Main() {
 		
 		timeText.str("");
 		timeText << "Average Frames Per Second:  " << fps;
-		texture.loadFontTexture(renderer, tFont, timeText.str().c_str(), textColor);
+		texture.loadFontTexture(renderer, font, timeText.str().c_str(), textColor);
 
 
 		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -106,7 +105,7 @@ bool Framerate::Main() {
 		texture.render(renderer, (screenWidth - texture.getWidth()) / 2, (screenHeight - texture.getHeight()) / 2);
 
 		SDL_RenderPresent(renderer);
-		frames++;
+		++frames;
 	}
 
 	return true;

@@ -1,4 +1,4 @@
-#include "RenderTexture.h"
+#include "Include/RenderTexture.h"
 
 RenderTexture::RenderTexture(){
 	textureWidth = 0;
@@ -17,7 +17,7 @@ bool RenderTexture::loadFontTexture(SDL_Renderer* renderer, TTF_Font* font, std:
 		printf("TTF_RenderText_Solid() Failed\n");
 		return false;
 	}
-	texture = SDL_CreateTextureFromSurface(tempSurface);
+	texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
 	if(!texture){
 		printf("SDL_CreateTextureFromSurface() Failed\n");
 		return false;
@@ -37,7 +37,7 @@ bool RenderTexture::loadTexture(SDL_Renderer* renderer, std::string str){
 		printf("TTF_RenderText_Solid() Failed\n");
 		return false;
 	}
-	texture = SDL_CreateTextureFromSurface(tempSurface);
+	texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
 	if(!texture){
 		printf("SDL_CreateTextureFromSurface() Failed\n");
 		return false;
@@ -68,7 +68,7 @@ void RenderTexture::render(SDL_Renderer* renderer, int x, int y, SDL_Rect* clip,
 		renderQuad.w = clip->w;
 	}
 	
-	SDL_RenderCopy(renderer, x, y, &renderQuad);
+	SDL_RenderCopy(renderer, texture, clip, &renderQuad);
 }
 
 int RenderTexture::getWidth(){
@@ -79,7 +79,7 @@ int RenderTexture::getHeight(){
 }
 void RenderTexture::free(){
 	if(texture){
-		SDL_DestoryTexture(texture);
+		SDL_DestroyTexture(texture);
 		texture = NULL;
 		textureWidth = 0;
 		textureHeight = 0;

@@ -21,5 +21,5 @@ class RenderTexture{
 	private:
 		int textureWidth;
 		int textureHeight;
-		SDL_Texture texture;
+		SDL_Texture* texture;
 };

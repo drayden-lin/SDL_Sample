@@ -1,4 +1,4 @@
-#include "AdvanceTiming.h"
+#include "Include/AdvanceTiming.h"
 
 bool AdvanceTiming::init() {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -114,7 +114,7 @@ bool AdvanceTiming::Main() {
 		timeText.str("");
 		timeText << "Milliseconds since start time " << timer.getTicks();
 		//textSprite.setText(timeText.str().c_str());
-		texture.loadFontTexture(renderer, tFont, timeText.str().c_str(), textColor);
+		texture.loadFontTexture(renderer, font, timeText.str().c_str(), textColor);
 
 
 		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);

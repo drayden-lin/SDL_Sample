@@ -1,4 +1,4 @@
-#include "Timer.h"
+#include "Include/Timer.h"
 
 Timer::Timer(){
 	startedTime = 0;
@@ -35,6 +35,13 @@ void Timer::resume(){
 		startedTime = SDL_GetTicks() - pausedTime;
 		pausedTime = 0;
 	}
+}
+
+bool Timer::isStarted() {
+	return started;
+}
+bool Timer::isPaused() {
+	return paused;
 }
 
 Uint32 Timer::getTicks(){

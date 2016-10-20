@@ -4,10 +4,10 @@ class Dot{
 	public:
 		Dot();
 		void handleEvent(SDL_Event* event);
-		void moveint (maxWidth, int maxHeight);
+		void move(int maxWidth, int maxHeight);
 		void render(RenderTexture* texture, SDL_Renderer* renderer);
 		
-		setVelocityInterval(int v);
+		void setVelocityInterval(int v);
 	private:
 		int xVelocity, yVelocity;
 		int xPosition, yPosition;

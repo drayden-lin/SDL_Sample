@@ -117,19 +117,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdvanceTiming.cpp" />
     <ClCompile Include="AlphaBlending.cpp" />
     <ClCompile Include="BlitRendering.cpp" />
     <ClCompile Include="ClipRendering.cpp" />
     <ClCompile Include="ColorKeying.cpp" />
     <ClCompile Include="ColorModulation.cpp" />
+    <ClCompile Include="Framerate.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="KeyStates.cpp" />
+    <ClCompile Include="Motion.cpp" />
     <ClCompile Include="MouseEvent.cpp" />
+    <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="RotationFlipping.cpp" />
     <ClCompile Include="SDLTutorial.cpp" />
     <ClCompile Include="SoundEffects.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
     <ClCompile Include="TextureRendering.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Timing.cpp" />
     <ClCompile Include="TrueTypeFont.cpp" />
     <ClCompile Include="ViewPort.cpp" />
