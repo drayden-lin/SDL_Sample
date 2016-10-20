@@ -1,4 +1,4 @@
-#include "SoundEffects.h"
+#include "Include/SoundEffects.h"
 
 bool SoundManager::loadSound() {
 	free();

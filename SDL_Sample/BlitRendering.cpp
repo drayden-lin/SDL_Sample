@@ -1,4 +1,4 @@
-#include "BlitRendering.h"
+#include "Include/BlitRendering.h"
 
 int BlitRendering::Main() {
 	bool quit = false;

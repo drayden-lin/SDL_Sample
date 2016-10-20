@@ -1,4 +1,4 @@
-#include "ClipRendering.h"
+#include "Include/ClipRendering.h"
 
 CTexture::CTexture() {
 	cTexture = NULL;

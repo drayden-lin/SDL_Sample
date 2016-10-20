@@ -135,21 +135,27 @@
     <ClCompile Include="ViewPort.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AlphaBlending.h" />
-    <ClInclude Include="BlitRendering.h" />
-    <ClInclude Include="ClipRendering.h" />
-    <ClInclude Include="ColorKeying.h" />
-    <ClInclude Include="ColorModulation.h" />
-    <ClInclude Include="Geometry.h" />
-    <ClInclude Include="KeyStates.h" />
-    <ClInclude Include="MouseEvent.h" />
-    <ClInclude Include="RotationFlipping.h" />
-    <ClInclude Include="SoundEffects.h" />
-    <ClInclude Include="SpriteAnimation.h" />
-    <ClInclude Include="TextureRendering.h" />
-    <ClInclude Include="Timing.h" />
-    <ClInclude Include="TrueTypeFont.h" />
-    <ClInclude Include="ViewPort.h" />
+    <ClInclude Include="Include\AdvanceTiming.h" />
+    <ClInclude Include="Include\AlphaBlending.h" />
+    <ClInclude Include="Include\BlitRendering.h" />
+    <ClInclude Include="Include\ClipRendering.h" />
+    <ClInclude Include="Include\ColorKeying.h" />
+    <ClInclude Include="Include\ColorModulation.h" />
+    <ClInclude Include="Include\Framerate.h" />
+    <ClInclude Include="Include\Geometry.h" />
+    <ClInclude Include="Include\KeyStates.h" />
+    <ClInclude Include="Include\Motion.h" />
+    <ClInclude Include="Include\MouseEvent.h" />
+    <ClInclude Include="Include\RenderTexture.h" />
+    <ClInclude Include="Include\RotationFlipping.h" />
+    <ClInclude Include="Include\SDLTutorial.h" />
+    <ClInclude Include="Include\SoundEffects.h" />
+    <ClInclude Include="Include\SpriteAnimation.h" />
+    <ClInclude Include="Include\TextureRendering.h" />
+    <ClInclude Include="Include\Timer.h" />
+    <ClInclude Include="Include\Timing.h" />
+    <ClInclude Include="Include\TrueTypeFont.h" />
+    <ClInclude Include="Include\ViewPort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

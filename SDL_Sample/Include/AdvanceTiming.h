@@ -1,4 +1,4 @@
-#include "RenderTexture"
+#include "RenderTexture.h"
 #include "Timer.h"
 #include <sstream>
 

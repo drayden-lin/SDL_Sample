@@ -1,4 +1,4 @@
-#include "ColorModulation.h"
+#include "Include/ColorModulation.h"
 
 cmTexture::cmTexture() {
 	texture = NULL;
