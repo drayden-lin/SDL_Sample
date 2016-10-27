@@ -69,8 +69,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>F:\WorkDirectory\Libraries\vs_dev_lib\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\WorkDirectory\Libraries\vs_dev_lib\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\WorkDirectory\Libraries\vs_dev_lib\include;C:\Workspace\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\WorkDirectory\Libraries\vs_dev_lib\lib\x86;C:\Workspace\Libraries\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
