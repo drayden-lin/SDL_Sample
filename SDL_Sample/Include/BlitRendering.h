@@ -14,14 +14,19 @@ public:
 	void close();
 	SDL_Surface* loadPNGSurface(std::string path);
 	SDL_Surface* loadMediaSurface(std::string path);
+	void firstThree();
+	int getNext();
 
 private:
 	enum keyPressed {
-		KEYPRESSED_DEFAULT,
-		KEYPRESSED_UP,
-		KEYPRESSED_DOWN,
-		KEYPRESSED_LEFT,
-		KEYPRESSED_RIGHT,
+		KEYPRESSED_1,
+		KEYPRESSED_2,
+		KEYPRESSED_3,
+		KEYPRESSED_4,
+		KEYPRESSED_5,
+		KEYPRESSED_6,
+		KEYPRESSED_7,
+		KEYPRESSED_8,
 		KEYPRESSED_TOTAL
 	};
 	SDL_Window* window = NULL;

@@ -13,7 +13,9 @@ int BlitRendering::Main() {
 		printf("loadMedia() Returned False\n");
 	}
 
-	imageSurface = pressedSurface[KEYPRESSED_DEFAULT];
+	imageSurface = loadMediaSurface("Data/hello_world.bmp");
+	SDL_Delay(3000);
+	firstThree();
 
 	while (!quit) {
 		while (SDL_PollEvent(&event) != 0) {
@@ -22,30 +24,43 @@ int BlitRendering::Main() {
 			}
 			else if (event.type == SDL_KEYDOWN) {
 			//Select surfaces based on key press
-			switch (event.key.keysym.sym)
-			{
-			case SDLK_UP:
-			imageSurface = pressedSurface[KEYPRESSED_UP];
-			break;
-			case SDLK_DOWN:
-			imageSurface = pressedSurface[KEYPRESSED_DOWN];
-			break;
-			case SDLK_LEFT:
-			imageSurface = pressedSurface[KEYPRESSED_LEFT];
-			break;
-			case SDLK_RIGHT:
-			imageSurface = pressedSurface[KEYPRESSED_RIGHT];
-			break;
-			case SDLK_s:
-			imageSurface = loadMediaSurface("Data/stretch.bmp");
-			break;
-			case SDLK_p:
-			imageSurface = loadPNGSurface("Data/loaded.png");
-			break;
-			default:
-			imageSurface = pressedSurface[KEYPRESSED_DEFAULT];
-			break;
-			}
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_KP_1:
+					imageSurface = pressedSurface[KEYPRESSED_1];
+					break;
+				case SDLK_KP_2:
+					imageSurface = pressedSurface[KEYPRESSED_2];
+					break;
+				case SDLK_KP_3:
+					imageSurface = pressedSurface[KEYPRESSED_3];
+					break;
+				case SDLK_KP_4:
+					imageSurface = pressedSurface[KEYPRESSED_4];
+					break;
+				case SDLK_KP_5:
+					imageSurface = pressedSurface[KEYPRESSED_5];
+					break;
+				case SDLK_KP_6:
+					imageSurface = pressedSurface[KEYPRESSED_6];
+					break;
+				case SDLK_KP_7:
+					imageSurface = pressedSurface[KEYPRESSED_7];
+					break;
+				case SDLK_KP_8:
+					imageSurface = pressedSurface[KEYPRESSED_8];
+					break;
+				case SDLK_s:
+					imageSurface = pressedSurface[getNext()];
+					printf("random\n");
+					break;
+				case SDLK_p:
+					imageSurface = loadPNGSurface("Data/loaded.png");
+					break;
+				default:
+					imageSurface = loadMediaSurface("Data/hello_world.bmp");
+					break;
+				}
 			}
 
 		}
@@ -56,7 +71,7 @@ int BlitRendering::Main() {
 		stretchRect.y = 0;
 		stretchRect.w = SCREEN_WIDTH;
 		stretchRect.h = SCREEN_HEIGHT;
-		SDL_BlitScaled(imageSurface, NULL, windowSurface, &stretchRect);
+		SDL_BlitScaled(imageSurface, NULL, windowSurface, NULL);
 
 		SDL_UpdateWindowSurface(window);
 
@@ -87,22 +102,27 @@ bool BlitRendering::init() {
 	if (window == NULL) { return false; }
 
 	windowSurface = SDL_GetWindowSurface(window);
-
+	srand(SDL_GetTicks());
 	return true;
 }
 
 bool BlitRendering::loadMedia() {
-	pressedSurface[KEYPRESSED_DEFAULT] = loadMediaSurface("Data/press.bmp");
-	if (!pressedSurface[KEYPRESSED_DEFAULT])return false;
-	pressedSurface[KEYPRESSED_UP] = loadMediaSurface("Data/up.bmp");
-	if (!pressedSurface[KEYPRESSED_UP])return false;
-	pressedSurface[KEYPRESSED_DOWN] = loadMediaSurface("Data/down.bmp");
-	if (!pressedSurface[KEYPRESSED_DOWN])return false;
-	pressedSurface[KEYPRESSED_LEFT] = loadMediaSurface("Data/left.bmp");
-	if (!pressedSurface[KEYPRESSED_LEFT])return false;
-	pressedSurface[KEYPRESSED_RIGHT] = loadMediaSurface("Data/right.bmp");
-	if (!pressedSurface[KEYPRESSED_RIGHT])return false;
-
+	pressedSurface[KEYPRESSED_1] = loadMediaSurface("Data/1.bmp");
+	if (!pressedSurface[KEYPRESSED_1])return false;
+	pressedSurface[KEYPRESSED_2] = loadMediaSurface("Data/2.bmp");
+	if (!pressedSurface[KEYPRESSED_2])return false;
+	pressedSurface[KEYPRESSED_3] = loadMediaSurface("Data/3.bmp");
+	if (!pressedSurface[KEYPRESSED_3])return false;
+	pressedSurface[KEYPRESSED_4] = loadMediaSurface("Data/4.bmp");
+	if (!pressedSurface[KEYPRESSED_4])return false;
+	pressedSurface[KEYPRESSED_5] = loadMediaSurface("Data/5.bmp");
+	if (!pressedSurface[KEYPRESSED_5])return false;
+	pressedSurface[KEYPRESSED_6] = loadMediaSurface("Data/6.bmp");
+	if (!pressedSurface[KEYPRESSED_6])return false;
+	pressedSurface[KEYPRESSED_7] = loadMediaSurface("Data/7.bmp");
+	if (!pressedSurface[KEYPRESSED_7])return false;
+	pressedSurface[KEYPRESSED_8] = loadMediaSurface("Data/8.bmp");
+	if (!pressedSurface[KEYPRESSED_8])return false;
 
 	return true;
 }
@@ -151,4 +171,31 @@ SDL_Surface* BlitRendering::loadPNGSurface(std::string path) {
 	}
 	return optimizedSurface;
 
+}
+
+
+void BlitRendering::firstThree() {
+
+	for (int i = 0; i < 3; i++) {
+
+		int randNum = (rand() % 8);
+
+
+		imageSurface = pressedSurface[randNum];
+
+		SDL_Rect stretchRect;
+		stretchRect.x = 0;
+		stretchRect.y = 0;
+		stretchRect.w = SCREEN_WIDTH;
+		stretchRect.h = SCREEN_HEIGHT;
+		SDL_BlitScaled(imageSurface, NULL, windowSurface, NULL);
+
+		SDL_UpdateWindowSurface(window);
+		SDL_Delay(1000);
+	}
+}
+
+int BlitRendering::getNext() {
+	int randNum = (rand() % 8);
+	return randNum;
 }
