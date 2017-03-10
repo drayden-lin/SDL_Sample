@@ -16,8 +16,6 @@
 //#include "Include/Framerate.h"
 //#include "Include\AdvanceTiming.h"
 #include "Include\Motion.h"
-#include <string>
-#include <cstdlib>
 
 #define BLIT 1
 
@@ -42,7 +40,7 @@ int main(int argc, char *args[]) {
 	Motion m;
 	
 
-	if (!br.Main()) {
+	if (!m.Main()) {
 		SDL_Delay(3000);
 		return -1;
 	}
