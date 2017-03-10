@@ -27,28 +27,36 @@ int BlitRendering::Main() {
 				switch (event.key.keysym.sym)
 				{
 				case SDLK_KP_1:
-					imageSurface = pressedSurface[KEYPRESSED_1];
+				case SDLK_1:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_1)];
 					break;
 				case SDLK_KP_2:
-					imageSurface = pressedSurface[KEYPRESSED_2];
+				case SDLK_2:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_2)];
 					break;
 				case SDLK_KP_3:
-					imageSurface = pressedSurface[KEYPRESSED_3];
+				case SDLK_3:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_3)];
 					break;
 				case SDLK_KP_4:
-					imageSurface = pressedSurface[KEYPRESSED_4];
+				case SDLK_4:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_4)];
 					break;
 				case SDLK_KP_5:
-					imageSurface = pressedSurface[KEYPRESSED_5];
+				case SDLK_5:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_5)];
 					break;
 				case SDLK_KP_6:
-					imageSurface = pressedSurface[KEYPRESSED_6];
+				case SDLK_6:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_6)];
 					break;
 				case SDLK_KP_7:
-					imageSurface = pressedSurface[KEYPRESSED_7];
+				case SDLK_7:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_7)];
 					break;
 				case SDLK_KP_8:
-					imageSurface = pressedSurface[KEYPRESSED_8];
+				case SDLK_8:
+					imageSurface = pressedSurface[printResult(KEYPRESSED_8)];
 					break;
 				case SDLK_s:
 					imageSurface = pressedSurface[getNext()];
@@ -85,6 +93,8 @@ int BlitRendering::Main() {
 
 bool BlitRendering::init() {
 
+	pos = 0;
+
 	if (SDL_Init(SDL_INIT_VIDEO)<0) { return false; }
 
 	if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
@@ -107,6 +117,8 @@ bool BlitRendering::init() {
 }
 
 bool BlitRendering::loadMedia() {
+	pressedSurface[DEFAULT] = loadMediaSurface("Data/hello_world.bmp");
+	if (!pressedSurface[DEFAULT])return false;
 	pressedSurface[KEYPRESSED_1] = loadMediaSurface("Data/1.bmp");
 	if (!pressedSurface[KEYPRESSED_1])return false;
 	pressedSurface[KEYPRESSED_2] = loadMediaSurface("Data/2.bmp");
@@ -178,8 +190,10 @@ void BlitRendering::firstThree() {
 
 	for (int i = 0; i < 3; i++) {
 
-		int randNum = (rand() % 8);
+		int randNum = getNext();
 
+		arr[i] = randNum;
+		pos++;
 
 		imageSurface = pressedSurface[randNum];
 
@@ -193,9 +207,22 @@ void BlitRendering::firstThree() {
 		SDL_UpdateWindowSurface(window);
 		SDL_Delay(1000);
 	}
+	pos = 0;
 }
 
 int BlitRendering::getNext() {
-	int randNum = (rand() % 8);
-	return randNum;
+	return (rand() % 8)+1;
+}
+
+int BlitRendering::printResult(int keyPressed) {
+	printf("Displayed: %d \t Entered: %d \t", arr[pos], keyPressed);
+	(arr[pos] == keyPressed) ? printf("Correct") : printf("Wrong");
+	printf("\n");
+	int ret = getNext();
+	arr[pos] = ret;
+
+	pos++;
+	if (pos >= length)
+		pos = 0;
+	return ret;
 }

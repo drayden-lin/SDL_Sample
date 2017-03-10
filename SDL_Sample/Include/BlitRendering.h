@@ -16,9 +16,11 @@ public:
 	SDL_Surface* loadMediaSurface(std::string path);
 	void firstThree();
 	int getNext();
+	int printResult(int keyPressed);
 
 private:
 	enum keyPressed {
+		DEFAULT,
 		KEYPRESSED_1,
 		KEYPRESSED_2,
 		KEYPRESSED_3,
@@ -33,5 +35,7 @@ private:
 	SDL_Surface* windowSurface = NULL;
 	SDL_Surface* imageSurface = NULL;
 	SDL_Surface* pressedSurface[KEYPRESSED_TOTAL];
-
+	const int length = 3;
+	int arr[3];
+	int pos;
 };
