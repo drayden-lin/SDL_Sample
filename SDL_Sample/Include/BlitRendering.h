@@ -17,6 +17,7 @@ public:
 	void firstThree();
 	int getNext();
 	int printResult(int keyPressed);
+	void displayBlankScreen();
 
 private:
 	enum keyPressed {
@@ -38,4 +39,7 @@ private:
 	const int length = 3;
 	int arr[3];
 	int pos;
+	int total;
+	int correct;
+	int wrong;
 };

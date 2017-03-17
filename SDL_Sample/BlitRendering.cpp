@@ -28,42 +28,50 @@ int BlitRendering::Main() {
 				{
 				case SDLK_KP_1:
 				case SDLK_1:
+				case SDLK_q:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_1)];
 					break;
 				case SDLK_KP_2:
 				case SDLK_2:
+				case SDLK_w:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_2)];
 					break;
 				case SDLK_KP_3:
 				case SDLK_3:
+				case SDLK_e:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_3)];
 					break;
 				case SDLK_KP_4:
 				case SDLK_4:
+				case SDLK_r:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_4)];
 					break;
 				case SDLK_KP_5:
 				case SDLK_5:
+				case SDLK_a:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_5)];
 					break;
 				case SDLK_KP_6:
 				case SDLK_6:
+				case SDLK_s:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_6)];
 					break;
 				case SDLK_KP_7:
 				case SDLK_7:
+				case SDLK_d:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_7)];
 					break;
 				case SDLK_KP_8:
 				case SDLK_8:
+				case SDLK_f:
 					imageSurface = pressedSurface[printResult(KEYPRESSED_8)];
 					break;
-				case SDLK_s:
+				case SDLK_z:
 					imageSurface = pressedSurface[getNext()];
 					printf("random\n");
 					break;
-				case SDLK_p:
-					imageSurface = loadPNGSurface("Data/loaded.png");
+				case SDLK_x:
+					printf("Total = %d\t Correct: %d\t Incorrect = %d\n", total, correct, wrong);
 					break;
 				default:
 					imageSurface = loadMediaSurface("Data/hello_world.bmp");
@@ -74,11 +82,11 @@ int BlitRendering::Main() {
 		}
 		//SDL_BlitSurface(imageSurface, NULL, windowSurface, NULL);
 		//Apply the image stretched
-		SDL_Rect stretchRect;
-		stretchRect.x = 0;
-		stretchRect.y = 0;
-		stretchRect.w = SCREEN_WIDTH;
-		stretchRect.h = SCREEN_HEIGHT;
+		////SDL_Rect stretchRect;
+		//stretchRect.x = 0;
+		//stretchRect.y = 0;
+		//stretchRect.w = SCREEN_WIDTH;
+		//stretchRect.h = SCREEN_HEIGHT;
 		SDL_BlitScaled(imageSurface, NULL, windowSurface, NULL);
 
 		SDL_UpdateWindowSurface(window);
@@ -94,7 +102,9 @@ int BlitRendering::Main() {
 bool BlitRendering::init() {
 
 	pos = 0;
-
+	total = 0;
+	correct = 0;
+	wrong = 0;
 	if (SDL_Init(SDL_INIT_VIDEO)<0) { return false; }
 
 	if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
@@ -215,14 +225,27 @@ int BlitRendering::getNext() {
 }
 
 int BlitRendering::printResult(int keyPressed) {
+	displayBlankScreen();
+	SDL_Delay(100);
 	printf("Displayed: %d \t Entered: %d \t", arr[pos], keyPressed);
-	(arr[pos] == keyPressed) ? printf("Correct") : printf("Wrong");
+	if (arr[pos] == keyPressed) {
+		correct++;
+		printf("Correct");
+	}
+	else {
+		wrong++;
+		printf("Wrong");
+	}
 	printf("\n");
 	int ret = getNext();
 	arr[pos] = ret;
-
+	total++;
 	pos++;
 	if (pos >= length)
 		pos = 0;
 	return ret;
+}
+void BlitRendering::displayBlankScreen() {
+	SDL_BlitScaled(loadMediaSurface("Data/blackScreen.bmp"), NULL, windowSurface, NULL);
+	SDL_UpdateWindowSurface(window);
 }
