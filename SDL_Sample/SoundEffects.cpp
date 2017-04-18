@@ -25,6 +25,7 @@ void SoundManager::play(int soundfiles) {
 	switch (soundfiles) {
 	case SCRATCH:
 		Mix_PlayChannel(-1, sScratch, 0);
+		//Mix_PlayChannel(-1, Mix_LoadWAV("Data/SoundEffects/high.wav"), 0);
 		break;
 	case HIGH:
 		Mix_PlayChannel(-1, sHigh, 0);

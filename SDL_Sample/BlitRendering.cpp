@@ -82,12 +82,12 @@ int BlitRendering::Main() {
 		}
 		//SDL_BlitSurface(imageSurface, NULL, windowSurface, NULL);
 		//Apply the image stretched
-		////SDL_Rect stretchRect;
-		//stretchRect.x = 0;
-		//stretchRect.y = 0;
-		//stretchRect.w = SCREEN_WIDTH;
-		//stretchRect.h = SCREEN_HEIGHT;
-		SDL_BlitScaled(imageSurface, NULL, windowSurface, NULL);
+		SDL_Rect stretchRect;
+		stretchRect.x = 0;
+		stretchRect.y = 0;
+		stretchRect.w = SCREEN_WIDTH;
+		stretchRect.h = SCREEN_HEIGHT;
+		SDL_BlitScaled(imageSurface, NULL, windowSurface, &stretchRect);
 
 		SDL_UpdateWindowSurface(window);
 
@@ -199,7 +199,7 @@ SDL_Surface* BlitRendering::loadPNGSurface(std::string path) {
 void BlitRendering::firstThree() {
 
 	for (int i = 0; i < 3; i++) {
-
+		
 		int randNum = getNext();
 
 		arr[i] = randNum;
@@ -212,10 +212,11 @@ void BlitRendering::firstThree() {
 		stretchRect.y = 0;
 		stretchRect.w = SCREEN_WIDTH;
 		stretchRect.h = SCREEN_HEIGHT;
-		SDL_BlitScaled(imageSurface, NULL, windowSurface, NULL);
+		SDL_BlitScaled(imageSurface, NULL, windowSurface, &stretchRect);
 
 		SDL_UpdateWindowSurface(window);
 		SDL_Delay(1000);
+		displayBlankScreen();
 	}
 	pos = 0;
 }
@@ -246,6 +247,11 @@ int BlitRendering::printResult(int keyPressed) {
 	return ret;
 }
 void BlitRendering::displayBlankScreen() {
-	SDL_BlitScaled(loadMediaSurface("Data/blackScreen.bmp"), NULL, windowSurface, NULL);
+	SDL_Rect stretchRect;
+	stretchRect.x = 0;
+	stretchRect.y = 0;
+	stretchRect.w = SCREEN_WIDTH;
+	stretchRect.h = SCREEN_HEIGHT;
+	SDL_BlitScaled(loadMediaSurface("Data/blackScreen.bmp"), NULL, windowSurface, &stretchRect);
 	SDL_UpdateWindowSurface(window);
 }

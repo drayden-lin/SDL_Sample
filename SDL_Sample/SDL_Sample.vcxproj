@@ -123,6 +123,7 @@
     <ClCompile Include="ClipRendering.cpp" />
     <ClCompile Include="ColorKeying.cpp" />
     <ClCompile Include="ColorModulation.cpp" />
+    <ClCompile Include="Determination.cpp" />
     <ClCompile Include="Framerate.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="KeyStates.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Include\ClipRendering.h" />
     <ClInclude Include="Include\ColorKeying.h" />
     <ClInclude Include="Include\ColorModulation.h" />
+    <ClInclude Include="Include\Determination.h" />
     <ClInclude Include="Include\Framerate.h" />
     <ClInclude Include="Include\Geometry.h" />
     <ClInclude Include="Include\KeyStates.h" />

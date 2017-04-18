@@ -78,6 +78,9 @@
     <ClCompile Include="Framerate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Determination.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\AdvanceTiming.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\ViewPort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Determination.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,9 @@
 
 #include "Include/BlitRendering.h"
-#include "Include/TextureRendering.h"
 #include "Include/ViewPort.h"
+#include "Include/Determination.h"
+/*#include "Include/TextureRendering.h"
+
 #include "Include/Geometry.h"
 #include "Include/ColorKeying.h"
 #include "Include/ClipRendering.h"
@@ -15,7 +17,7 @@
 #include "Include/SoundEffects.h"
 //#include "Include/Framerate.h"
 //#include "Include\AdvanceTiming.h"
-#include "Include\Motion.h"
+#include "Include\Motion.h"*/
 #include <string>
 #include <cstdlib>
 
@@ -23,8 +25,11 @@
 
 int main(int argc, char *args[]) {
 
-	TextureRandering tr;
+	
 	BlitRendering br;
+	ViewPort vp;
+	Determination dt;
+	/*TextureRandering tr;
 	ViewPort vp;
 	Geometry gm;
 	ColorKeying ck;
@@ -39,12 +44,21 @@ int main(int argc, char *args[]) {
 	MouseEvent me;
 	//Framerate fr;
 	//AdvanceTiming at;
-	Motion m;
+	Motion m;*/
 	
+	bool twoBackCancelling = true;
 
-	if (!br.Main()) {
-		SDL_Delay(3000);
-		return -1;
+	if (twoBackCancelling) {
+		if (!dt.Main()) {
+			SDL_Delay(3000);
+			return -1;
+		}
+	}
+	else {
+		if (!vp.Main()) {
+			SDL_Delay(3000);
+			return -1;
+		}
 	}
 
 	return 0;
